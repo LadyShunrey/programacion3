@@ -1,6 +1,3 @@
-package TPEspecial;
-
-
 public class Arco<T> {
 	private Integer verticeOrigen;
 	private Integer verticeDestino;

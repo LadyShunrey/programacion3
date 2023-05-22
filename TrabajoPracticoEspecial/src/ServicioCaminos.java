@@ -1,4 +1,4 @@
-package TPEspecial;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,10 +22,6 @@ public class ServicioCaminos<T> {
 		this.colores= new HashMap<>();
 
 	}
-	
-//	Caminos: dado un origen, un destino y un límite “lim” retorna todos los caminos que, partiendo del
-//	vértice origen, llega al vértice de destino sin pasar por más de “lim” arcos. Aclaración importante: en
-//	un camino no se puede pasar 2 veces por el mismo arco
 	
 	public List<List<Integer>> caminos(){
 		Iterator <Integer> vertices = this.grafo.obtenerVertices();
@@ -55,11 +51,12 @@ public class ServicioCaminos<T> {
 	
 	private List<List<Integer>> buscarCaminos(Integer v){
 		List<List<Integer>> resultado = new ArrayList<List<Integer>>();
-		List<List<Integer>> caminosParciales = new ArrayList<List<Integer>>();
+//		
 		int cantidad =0;
 		Iterator<Integer> it = this.grafo.obtenerAdyacentes(v);
 		Iterator<Arco<T>> arcos = this.grafo.obtenerArcos(v);
 		colores.put(v, "amarillo");
+		
 		if(v.equals(this.destino)) {
 			ArrayList<Integer> unicoCamino = new ArrayList<>();
 			unicoCamino.add(v);
@@ -68,15 +65,17 @@ public class ServicioCaminos<T> {
 			while(it.hasNext()) {
 			Arco<T> arco = arcos.next();
 			Integer ady = it.next();
-				cantidad ++;
-				if(visitado.get(arco)==false) {
-					caminosParciales.addAll(buscarCaminos(ady));	
-					visitado.put(arco, true);
-				}
 			
-			if(cantidad <= lim || ady==this.destino) {
+			if(cantidad <= lim && visitado.get(arco)==false) {
+				List<List<Integer>> caminosParciales = new ArrayList<List<Integer>>();
+				caminosParciales.addAll(buscarCaminos(ady));
+				visitado.put(arco, true);
+				cantidad ++;
+				
 				for(List<Integer> caminoParcial : caminosParciales) {
-					resultado.add(caminoParcial);
+					List<Integer> nuevoCamino = new ArrayList<>(caminoParcial);
+					nuevoCamino.add(0, v);
+					resultado.add(nuevoCamino);
 					}
 				
 			}
