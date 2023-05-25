@@ -19,12 +19,11 @@ public class Main {
 		grafo.agregarArco(5, 2, null);
 		grafo.agregarArco(5, 6, null);
 
-		System.out.println("- Nuestro grafo tiene: " + grafo.cantidadVertices() + " vertices");
-		System.out.println("- Nuestro grafo tiene: " + grafo.cantidadArcos() + " arcos");
-		System.out.println("- Existe el arco desde 1 a 2 directo?: " + grafo.existeArco(1, 2));
-		
-		System.out.println("- Si no existe el arco desde 1 a 2 entonces vamos a buscar si existe una forma de llegar desde 1 hasta 2:");
+		System.out.println("- Nuestro Grafo 1 tiene: " + grafo.cantidadVertices() + " vertices");
+		System.out.println("- Nuestro Grafo 1 tiene: " + grafo.cantidadArcos() + " arcos");
 
+		System.out.println("- Presentamos los distintos servicios de nuestro sistema:");
+		
 		System.out.println("- Servicio DFS:");
 		ServicioDFS<Integer> DFS = new ServicioDFS<Integer>(grafo);
 		System.out.println("- Arco Tree DFS " + DFS.dfsForest());
@@ -33,6 +32,8 @@ public class Main {
 		ServicioBFS<Integer> BFS = new ServicioBFS<Integer>(grafo);
 		System.out.println("- Arco Tree BFS " + BFS.bfsForest());
 		
+		System.out.println("- Existe el arco desde 1 a 2 directo?: " + grafo.existeArco(1, 2));
+		System.out.println("- Si no existe el arco desde 1 a 2 entonces vamos a buscar si existe una forma de llegar desde 1 hasta 2:");
 		System.out.println("- Servicio de Caminos:");
 		ServicioCaminos<Integer> Camino = new ServicioCaminos<Integer>(grafo,1,2,3);
 		System.out.println(Camino.caminos());
@@ -57,12 +58,11 @@ public class Main {
 		grafo2.agregarArco(1, 4, null);
 		grafo2.agregarArco(2, 1, null);
 
-		System.out.println("- Nuestro grafo 2 tiene: " + grafo2.cantidadVertices() + " vertices");
-		System.out.println("- Nuestro grafo 2 tiene: " + grafo2.cantidadArcos() + " arcos");
-		System.out.println("- Existe el arco desde 1 a 2 directo?: " + grafo.existeArco(1, 2));
-		
-		System.out.println("- Si no existe el arco desde 1 a 2 entonces vamos a buscar si existe una forma de llegar desde 1 hasta 2:");
+		System.out.println("- Nuestro Grafo 2 tiene: " + grafo2.cantidadVertices() + " vertices");
+		System.out.println("- Nuestro Grafo 2 tiene: " + grafo2.cantidadArcos() + " arcos");
 
+		System.out.println("- Presentamos los distintos servicios de nuestro sistema:");
+		
 		System.out.println("- Servicio DFS:");
 		ServicioDFS<Integer> DFS2 = new ServicioDFS<Integer>(grafo2);
 		System.out.println("- Arco Tree DFS " + DFS2.dfsForest());
@@ -71,6 +71,8 @@ public class Main {
 		ServicioBFS<Integer> BFS2 = new ServicioBFS<Integer>(grafo2);
 		System.out.println("- Arco Tree BFS " + BFS2.bfsForest());
 		
+		System.out.println("- Existe el arco desde 1 a 4 directo?: " + grafo2.existeArco(1, 4));
+		System.out.println("- Aunque exista el arco desde 1 a 4 directo, vamos a buscar si existen más formas de llegar desde 1 hasta 4:");
 		System.out.println("- Servicio de Caminos:");
 		ServicioCaminos<Integer> Camino2 = new ServicioCaminos<Integer>(grafo2,1,4,3);
 		System.out.println(Camino2.caminos());
