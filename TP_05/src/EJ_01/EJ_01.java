@@ -10,7 +10,7 @@ public class EJ_01 {
 	
 	public static void greedy(ArrayList<Billete> candidatos){
 		ArrayList<Billete> conjuntoSolucion = new ArrayList<>();
-		while(!solucion(conjuntoSolucion)){ //el while no hace falta poner que sea hasta que el conjunto candidatos este vacio porque el enunciado dice que es infinito
+		while(!solucion(conjuntoSolucion)){ //el while no hace falta poner que sea hasta que el conjunto candidatos esté vacío porque el enunciado dice que es infinito
 			//x seleccionar
 			Billete seleccionado = seleccionar(candidatos, conjuntoSolucion);
 			//billetesDisponibles.remove(seleccionado); //Este paso no es necesario porque el enunciado dice que tengo infinita cantidad de billetes de cada denominacion
