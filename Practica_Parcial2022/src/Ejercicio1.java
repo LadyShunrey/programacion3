@@ -19,7 +19,7 @@ public class Ejercicio1 {
 	
 	//determinar si hay ciclo uso DFS para test de aciclidad (método testDeCiclos)
 	//si testDeCiclo igual true
-		//suma los arcos back de ese ciclo
+		//suma los arcos de ese ciclo
 		//si suma es igual a X
 			//devuelvo true
 }
