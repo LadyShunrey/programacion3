@@ -62,6 +62,7 @@ public class Backtracking<T> {
 //									//creo que hay que hacer redSubte.clear y después redSubte addAll
 								redSubterraneo.clear();
 								redSubterraneo.addAll(solucionEnConstruccion);
+//								redSubterraneo = new ArrayList<>(solucionEnConstruccion);
 								System.out.println("Tengo un result=true");
 								System.out.println("Red de subte en construccion: "+solucionEnConstruccion);
 								System.out.println("Longitud de la red de subte en construccion: "+metrosDeRedActualEnConstruccion);
