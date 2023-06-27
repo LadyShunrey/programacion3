@@ -9,11 +9,12 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		GrafoNoDirigido<String> grafo = new GrafoNoDirigido<String>();
+		GrafoNoDirigido<String> grafo = new GrafoNoDirigido<>();
 		
-		String path = "/TrabajoPracticoEspecial/src/Datasets/dataset1.txt";
+		String path1 = "C:\\Users\\shunr\\workspace3\\TrabajoPracticoEspecial\\src\\Datasets\\dataset1.txt";
+		String path2 = "C:\\Users\\shunr\\workspace3\\TrabajoPracticoEspecial\\src\\Datasets\\dataset2.txt";
 		
-		CSVReader<Integer> reader = new CSVReader<Integer>(path);
+		CSVReader<String> reader = new CSVReader<>(path1);
 		
 		reader.read(grafo);
 		
@@ -22,9 +23,13 @@ public class Main {
 		/*grafoInicial, estacion actual, metrosConstruidos, solucionParcial*/
 		String primerEstacion = grafo.obtenerVertices().next(); 
 		
-		if (backtracking.backtracking(grafo, primerEstacion, 0, new ArrayList<Arco<String>>())){
-			System.out.println(backtracking.getRedSubterraneo());
-		}
+		ArrayList<String> solucion = new ArrayList<>();
+		
+		solucion.add(primerEstacion);
+		
+		backtracking.backtracking(grafo, primerEstacion, 0, solucion);
+		System.out.println("Mi red de subte queda: "+backtracking.getRedSubterraneo());
+		System.out.println("La longitud red de subte queda: "+backtracking.longitudRedSubterraneo);
 	}
 
 } 

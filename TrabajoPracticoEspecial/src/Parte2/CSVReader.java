@@ -26,8 +26,8 @@ import java.util.ArrayList;
 			
 			for (String[] line: lines) {
 				// Cada linea es un arreglo de Strings, donde cada posicion guarda un elemento
-				String origen = line[0].trim().substring(1);
-				String destino = line[1].trim().substring(1);
+				T origen = (T) line[0];
+				T destino = (T) line[1];
 				Integer etiqueta = Integer.parseInt(line[2].trim());
 				
 				// Aca instanciar lo que necesiten en base a los datos leidos
@@ -35,7 +35,6 @@ import java.util.ArrayList;
 				grafo.agregarVertice(destino);
 				grafo.agregarArco(origen, destino,etiqueta);
 			}
-			
 		}
 
 		private ArrayList<String[]> readContent() {

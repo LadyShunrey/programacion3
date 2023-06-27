@@ -18,5 +18,7 @@ public class GrafoNoDirigido<T> extends GrafoDirigido<T>{
 		public int cantidadArcos() {
 			return super.cantidadArcos() / 2;
 		}
+		
+		
 
 }
