@@ -7,7 +7,7 @@ import Parte1.Arco;
 public class Backtracking<T> {
 	
 	//arrayList de soluciones
-	private ArrayList<T> redSubterraneo;
+	private ArrayList<Arco<T>> redSubterraneo;
 	public int longitudRedSubterraneo;
 	
 	public Backtracking(){
@@ -21,13 +21,13 @@ public class Backtracking<T> {
 	}
 	
 	//metodo void backtracking que agrega elementos a la redsubterraneo
-	public boolean backtracking(GrafoNoDirigido<T> grafo, T estacionActual, int metrosDeRedActualEnConstruccion, ArrayList<T> solucionEnConstruccion){
+	public boolean backtracking(GrafoNoDirigido<T> grafo, T estacionActual, int metrosDeRedActualEnConstruccion, ArrayList<Arco<T>> solucionEnConstruccion){
 		System.out.println("Entro a Backtracking");
 		System.out.println("Red de subte en construccion: "+solucionEnConstruccion);
 		System.out.println("Longitud de la red de subte en construccion: "+metrosDeRedActualEnConstruccion);
 		//boolean result = false;
 		//if llegue a la solucion return true
-		if(grafo.cantidadVertices() == solucionEnConstruccion.size()){
+		if(grafo.cantidadArcos() == solucionEnConstruccion.size()){
 			//terminé
 			return true;
 		}
@@ -44,12 +44,14 @@ public class Backtracking<T> {
 				//elijo una siguiente
 				T estacionSiguiente = iteradorDeEstaciones.next();
 				//si no tengo ese arco en la solucion me fijo si se puede agregar
-				if(!solucionEnConstruccion.contains(estacionSiguiente)){
-					Arco<T> tunelEntreLasEstaciones = grafo.obtenerArco(estacionActual, estacionSiguiente);
+				
+//				if(!existeArco(solucionEnConstruccion, estacionActual, estacionSiguiente)){
+				if(!solucionEnConstruccion.contains(grafo.obtenerArco(estacionActual,estacionSiguiente))){
+					Arco<T> tunelEntreLasEstaciones = grafo.obtenerArco(estacionActual,estacionSiguiente);
 					int longitudDelTunel = tunelEntreLasEstaciones.getEtiqueta();
 					//si no lo podo lo agrego a la solucion potencial
 					if(!poda(metrosDeRedActualEnConstruccion+longitudDelTunel)){
-						solucionEnConstruccion.add(estacionSiguiente);
+						solucionEnConstruccion.add(tunelEntreLasEstaciones);
 						//sumo ese arco a mi suma solucion parcial
 						metrosDeRedActualEnConstruccion += longitudDelTunel;
 						boolean result = backtracking(grafo, estacionSiguiente, metrosDeRedActualEnConstruccion, solucionEnConstruccion);
@@ -68,7 +70,7 @@ public class Backtracking<T> {
 								System.out.println("Longitud de la red de subte en construccion: "+metrosDeRedActualEnConstruccion);
 							}
 						}
-						solucionEnConstruccion.remove(estacionSiguiente);
+						solucionEnConstruccion.remove(tunelEntreLasEstaciones);
 						metrosDeRedActualEnConstruccion -= longitudDelTunel;
 						System.out.println("Saco la última estacion y vuelvo en la recursión");
 						System.out.println("Red de subte en construccion: "+solucionEnConstruccion);
@@ -81,9 +83,21 @@ public class Backtracking<T> {
 	}
 
 	//metodo que devuelve el arraylist de red de subterraneo
-	public ArrayList<T> getRedSubterraneo(){
+	public ArrayList<Arco<T>> getRedSubterraneo(){
 		return redSubterraneo;
 	}
 	
+//	public boolean existeArco(ArrayList<Arco<T>> grafo, T verticeId1, T verticeId2) {
+//		boolean existe = false;
+//		for(Arco<T> arco: grafo) {
+//			if((arco.getVerticeOrigen().equals(verticeId1) && arco.getVerticeDestino().equals(verticeId2)) ||
+//		            (arco.getVerticeOrigen().equals(verticeId2) && arco.getVerticeDestino().equals(verticeId1))) {
+//				return true;
+//			}else {
+//				existe=false;
+//			}
+//		}
+//		return existe;
+//	}
 
 }

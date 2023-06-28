@@ -31,6 +31,6 @@ public class Arco<T> {
 	}
 		
 	public String toString() {
-		return "El vertice origen es [ vertice origen = " + verticeOrigen + "] \n El vertice destino del arco es [ vertice destino = " + verticeDestino + " ] \n La distancia entre estos vértices es [ distancia = " + etiqueta + " ]";
+		return "["+verticeOrigen + "->" + verticeDestino + " distancia: " + etiqueta + " ]";
 	}
 }

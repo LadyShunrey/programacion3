@@ -23,9 +23,9 @@ public class Main {
 		/*grafoInicial, estacion actual, metrosConstruidos, solucionParcial*/
 		String primerEstacion = grafo.obtenerVertices().next(); 
 		
-		ArrayList<String> solucion = new ArrayList<>();
+		ArrayList<Arco<String>> solucion = new ArrayList<>();
 		
-		solucion.add(primerEstacion);
+//		solucion.add(primerEstacion);
 		
 		backtracking.backtracking(grafo, primerEstacion, 0, solucion);
 		System.out.println("Mi red de subte queda: "+backtracking.getRedSubterraneo());

@@ -137,5 +137,11 @@ public class GrafoDirigido<T> implements Grafo<T> {
 		return values.iterator();	
 	}
 
+	public boolean existeArco(ArrayList<Arco<T>> grafo, T verticeId1,
+			T verticeId2) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 }
