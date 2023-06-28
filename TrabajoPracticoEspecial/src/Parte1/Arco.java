@@ -23,7 +23,7 @@ public class Arco<T> {
 	}
 	
 	public boolean equals(Arco<T> a) {
-		if(a.verticeOrigen==this.verticeOrigen && a.getVerticeDestino()==this.getVerticeDestino()) {
+		if((a.verticeOrigen==this.verticeOrigen && a.getVerticeDestino()==this.getVerticeDestino()) || (a.verticeOrigen==this.getVerticeDestino() && a.getVerticeDestino()==this.verticeOrigen)) {
 			return true;
 		}else {
 			return false;

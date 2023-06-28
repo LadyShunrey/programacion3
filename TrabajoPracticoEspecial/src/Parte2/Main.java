@@ -12,7 +12,7 @@ public class Main {
 		GrafoNoDirigido<String> grafo = new GrafoNoDirigido<>();
 		
 		String path1 = "C:\\Users\\shunr\\workspace3\\TrabajoPracticoEspecial\\src\\Datasets\\dataset1.txt";
-		String path2 = "C:\\Users\\shunr\\workspace3\\TrabajoPracticoEspecial\\src\\Datasets\\dataset2.txt";
+//		String path2 = "C:\\Users\\shunr\\workspace3\\TrabajoPracticoEspecial\\src\\Datasets\\dataset2.txt";
 		
 		CSVReader<String> reader = new CSVReader<>(path1);
 		
