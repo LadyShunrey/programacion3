@@ -1,3 +1,4 @@
+package Practica_Parcial2022;
 // Un camionero conduce desde Buenos Aires hasta Ushuaia.
 // con el tanque lleno recorre K kilometros sin parar
 //Tenemos las distancias entre las estaciones que hay en la ruta

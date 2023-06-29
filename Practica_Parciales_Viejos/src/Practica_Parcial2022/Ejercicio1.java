@@ -1,4 +1,4 @@
-
+package Practica_Parcial2022;
 
 //Escriba en pseudo-código un algoritmo que resuelva el siguiente problema:
 //Dado un grafo dirigido, el cual contiene a lo sumo un solo ciclo, determine si, en caso de que tenga ciclo, la suma de los arcos

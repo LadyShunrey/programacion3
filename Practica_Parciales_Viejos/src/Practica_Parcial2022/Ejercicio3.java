@@ -1,3 +1,4 @@
+package Practica_Parcial2022;
 //backtracking del ejercicio 2
 
 public class Ejercicio3 {

@@ -1,4 +1,4 @@
-
+package Practica_Parcial2022;
 public class Ejercicio4 {
 	//estructura de Hashing con M = 4, rp = 2, rs = 1 y pd = 0.74
 	//se usa h(x) = x mod M
