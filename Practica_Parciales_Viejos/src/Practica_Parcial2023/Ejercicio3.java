@@ -22,9 +22,16 @@ public class Ejercicio3 {
 	//S={5, 19, 3} {} {} {}	// S={5,19} {3} {} {}	// S={5,19} {} {3} {}	// S={5,19} {} {} {3}
 	
 	
-	//public ArrayList<int> backtracking(conjuntoN, solucionParcial){
+	//public ArrayList<ArrayList<int>> backtracking(ArrayList<int> conjuntoN, ArrayList<ArrayList<int>>solucionParcial){
 		//if(solucion(solucionParcial, conjuntoN)){
-			
+			//return solucionParcial;
+		//}
+		//else{
+			//busco una solucion
+			//while(conjunto tenga elementos)
+				//agarro un numero y lo pruebo en cada subconjunto y recurso con el siguiente numero
+				//if este elemento es factible
+					//lo agrego a un subconjunto de solucionParcial
 		//}
 	//}
 	
