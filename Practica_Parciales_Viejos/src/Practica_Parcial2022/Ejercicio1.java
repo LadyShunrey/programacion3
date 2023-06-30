@@ -22,4 +22,18 @@ public class Ejercicio1 {
 		//suma los arcos de ese ciclo
 		//si suma es igual a X
 			//devuelvo true
+	
+	
+	
+	
+	
+	
+	
+	//Idea:
+	
+	
+	//Desarrollo:
+	
+	
+	//Pseudocódigo:
 }

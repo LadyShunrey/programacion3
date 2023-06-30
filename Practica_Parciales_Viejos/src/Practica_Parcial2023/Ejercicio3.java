@@ -26,13 +26,23 @@ public class Ejercicio3 {
 		//if(solucion(solucionParcial, conjuntoN)){
 			//return solucionParcial;
 		//}
-		//else{
-			//busco una solucion
-			//while(conjunto tenga elementos)
-				//agarro un numero y lo pruebo en cada subconjunto y recurso con el siguiente numero
-				//if este elemento es factible
-					//lo agrego a un subconjunto de solucionParcial
+		//else{ //busco una solucion			
+			//while(!conjuntoN.isEmpty()){
+				//numeroActual = conjuntoN.iterator().next(); //agarro un numero 
+				//conjuntoN.remove(numeroActual);
+				//lo agrego a un subconjunto de solucionParcial pruebo de poner ese número en un subconjunto y recurso con el siguiente numero
+				//for(ArrayList<int> subconjunto: solucionParcial){ //pido un subconjunto
+					//if(!subconjunto.contains(numeroActual)){
+						//subconjunto.add(numeroActual)
+						//solucionParcial = backtracking(conjuntoN, solucionParcial);
+					//}
+				//}
+			//}
 		//}
+		//if(!solucion(solucionParcial,conjuntoN) && (conjuntoN.isEmpty()) ){
+			//no existe solucion
+		//}
+		//en qué momento me doy cuenta que no existe solucion
 	//}
 	
 	//public boolean solucion(){
