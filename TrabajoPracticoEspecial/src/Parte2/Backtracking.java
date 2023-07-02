@@ -11,10 +11,12 @@ public class Backtracking<T> {
 	// arrayList de soluciones
 	private ArrayList<Arco<T>> redSubterraneo;
 	public int longitudRedSubterraneo;
+	public int contadorBacktracking;
 
 	public Backtracking() {
 		this.redSubterraneo = new ArrayList<>();
-		longitudRedSubterraneo = 500; // Integer.MAX_VALUE; /*Esto es un número muy, muy grande*/
+		longitudRedSubterraneo = 440; // Integer.MAX_VALUE; /*Esto es un número muy, muy grande*/
+		contadorBacktracking = 0;
 	}
 
 	// metodo que devuelve el arraylist de red de subterraneo
@@ -25,7 +27,7 @@ public class Backtracking<T> {
 	// poda: si el camino que llevo es mas largo que el camino parcial tengo
 	// guardado como más corto podo toda esa rama.
 	public boolean poda(int sumaCaminoHastaAhora) {
-		return sumaCaminoHastaAhora >= longitudRedSubterraneo;
+		return sumaCaminoHastaAhora > longitudRedSubterraneo;
 	}
 
 	// Alcanzo una solucion cuando la cantidad de vertices delk grafo es igual a la
@@ -56,9 +58,12 @@ public class Backtracking<T> {
 	// metodo void backtracking que agrega elementos a la redsubterraneo
 	public boolean backtracking(GrafoNoDirigido2<T> grafo, T estacionActual, int metrosDeRedActualEnConstruccion,
 			ArrayList<Arco<T>> solucionEnConstruccion, List<T> visitadas) {
+		
+		
 		System.out.println("Entro a Backtracking");
 		System.out.println("Red de subte en construccion: " + solucionEnConstruccion);
 		System.out.println("Longitud de la red de subte en construccion: " + metrosDeRedActualEnConstruccion);
+		System.out.println("Cantidad de iteraciones: " + contadorBacktracking);
 
 		// if llegue a la solucion return true
 		if (esSolucion(grafo, visitadas)) {
@@ -74,9 +79,11 @@ public class Backtracking<T> {
 			Iterator<Arco<T>> iteradorArcos = obtenerPosiblesArcos(grafo, visitadas, solucionEnConstruccion).iterator();
 
 			while (iteradorArcos.hasNext()) {
+				contadorBacktracking++;
 				System.out.println("Entro al while");
 				System.out.println("Red de subte en construccion: " + solucionEnConstruccion);
 				System.out.println("Longitud de la red de subte en construccion: " + metrosDeRedActualEnConstruccion);
+				System.out.println("Cantidad de iteraciones: " + contadorBacktracking);
 				// elijo un arco siguiente
 				Arco<T> arcoSiguiente = iteradorArcos.next();
 				// si no tengo ese arco en la solucion me fijo si se puede agregar
@@ -106,6 +113,7 @@ public class Backtracking<T> {
 								System.out.println("Red de subte en construccion: " + solucionEnConstruccion);
 								System.out.println("Longitud de la red de subte en construccion: "
 										+ metrosDeRedActualEnConstruccion);
+								System.out.println("Cantidad de iteraciones: " + contadorBacktracking);
 							}
 						}
 						// Deshago la construcción de la solución
@@ -117,6 +125,7 @@ public class Backtracking<T> {
 						System.out.println("Red de subte en construccion: " + solucionEnConstruccion);
 						System.out.println(
 								"Longitud de la red de subte en construccion: " + metrosDeRedActualEnConstruccion);
+						System.out.println("Cantidad de iteraciones: " + contadorBacktracking);
 					}
 				}
 			} /* cierro while */
