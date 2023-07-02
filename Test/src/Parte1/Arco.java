@@ -1,10 +1,9 @@
 package Parte1;
 
-public abstract class Arco<T> {
-	
-	protected T verticeOrigen;
-	protected T verticeDestino;
-	protected Integer etiqueta;
+public class Arco<T> {
+	private T verticeOrigen;
+	private T verticeDestino;
+	private Integer etiqueta;
 
 	public Arco(T verticeOrigen, T verticeDestino, Integer etiqueta) {
 		this.verticeOrigen = verticeOrigen;
@@ -24,7 +23,9 @@ public abstract class Arco<T> {
 		return etiqueta;
 	}
 
-	public abstract boolean equals(Arco<T> a);
+	public boolean equals(Arco<T> a) {
+		return (a.verticeOrigen.equals(this.verticeOrigen) && a.getVerticeDestino().equals(this.getVerticeDestino()));
+	}
 
 	public String toString() {
 		return "[ " + verticeOrigen + ", " + verticeDestino + " ]";

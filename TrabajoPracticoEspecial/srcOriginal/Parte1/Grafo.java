@@ -8,7 +8,7 @@ public interface Grafo<T> {
 	
 	public void borrarVertice(T verticeId);
 	
-	public void agregarArco(T verticeId1, T verticeId2, Integer etiqueta);
+	public void agregarArco(T verticeId1, T verticeId2, int etiqueta);
 	
 	public void borrarArco(T verticeId1, T verticeId2);
 	

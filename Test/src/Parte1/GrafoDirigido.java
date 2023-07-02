@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
+
+
 public class GrafoDirigido<T> implements Grafo<T> {
 
 	private HashMap<T, ArrayList<Arco<T>>> compGrafo;
@@ -32,7 +34,7 @@ public class GrafoDirigido<T> implements Grafo<T> {
 	}
 	
 	//Complejidad: O(1) 
-	public void agregarArco(T verticeId1, T verticeId2, int etiqueta) {
+	public void agregarArco(T verticeId1, T verticeId2, Integer etiqueta) {
 		Arco<T> a = new Arco<T>(verticeId1, verticeId2, etiqueta);
 			if(compGrafo.containsKey(verticeId1)) {
 				ArrayList<Arco<T>>arcos =compGrafo.get(verticeId1);
@@ -81,11 +83,12 @@ public class GrafoDirigido<T> implements Grafo<T> {
 
 	//Complejidad : O(m ) m-> cantidad de arcos 
 	public Arco<T> obtenerArco(T verticeId1, T verticeId2) {
+		
 		Arco<T> a = new Arco<T>(verticeId1, verticeId2, null);
 		if(compGrafo.containsKey(verticeId1)) {
 			ArrayList<Arco<T>>arcos =compGrafo.get(verticeId1);
 			for(Arco<T> arco : arcos) {
-				if(arco.getVerticeDestino().equals(verticeId2)) { //FIXME FIXME para que ande tambien en GND
+				if(arco.equals(a)) {
 					return arco;
 				}
 			}
@@ -119,6 +122,7 @@ public class GrafoDirigido<T> implements Grafo<T> {
 		return arcos.iterator();
 	}
 
+
 	//Complejidad : O(m) m-> cantidad de arcos
 	public Iterator<T> obtenerAdyacentes(T verticeId) {
 		ArrayList<T> ady = new ArrayList<>();
@@ -137,11 +141,7 @@ public class GrafoDirigido<T> implements Grafo<T> {
 		return values.iterator();	
 	}
 
-	public boolean existeArco(ArrayList<Arco<T>> grafo, T verticeId1,
-			T verticeId2) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+
 
 	
 }
