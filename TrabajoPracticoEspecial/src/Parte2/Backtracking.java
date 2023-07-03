@@ -2,135 +2,152 @@ package Parte2;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 import Parte1.Arco;
 
-public class Backtracking<T> {
+public class Backtracking {
+	private GrafoNoDirigido<Integer> grafo;
+	private List<Arco<Integer>> redSubterraneo;
+	private Integer longitudSubterraneo;
+	private int sumaParcial;
+	private List<Arco<Integer>> arcos;
+	private List<Arco<Integer>> solucionParcial;
+	private int contadorCiclos;
+	private double tiempoBacktracking;
 
-	// arrayList de soluciones
-	private ArrayList<Arco<T>> redSubterraneo;
-	public int longitudRedSubterraneo;
-	public int contadorBacktracking;
-
-	public Backtracking() {
-		this.redSubterraneo = new ArrayList<>();
-		longitudRedSubterraneo = 440; // Integer.MAX_VALUE; /*Esto es un número muy, muy grande*/
-		contadorBacktracking = 0;
+	public Backtracking(GrafoNoDirigido<Integer> grafo, int maxValue) {
+		this.grafo = grafo;
+		this.redSubterraneo = new LinkedList<>();
+		this.longitudSubterraneo = Integer.MAX_VALUE;
+		this.arcos = new ArrayList<>();
+		inicializarArcos();
+		this.solucionParcial = new LinkedList<>();
+		this.contadorCiclos = 0;
+	}
+	
+	public Integer getLongitudSubterraneo() {
+		return longitudSubterraneo;
 	}
 
-	// metodo que devuelve el arraylist de red de subterraneo
-	public ArrayList<Arco<T>> getRedSubterraneo() {
+	public void setLongitudSubterraneo(Integer longitudSubterraneo) {
+		this.longitudSubterraneo = longitudSubterraneo;
+	}
+
+	public List<Arco<Integer>> getRedSubterraneo() {
 		return redSubterraneo;
 	}
 
-	// poda: si el camino que llevo es mas largo que el camino parcial tengo
-	// guardado como más corto podo toda esa rama.
-	public boolean poda(int sumaCaminoHastaAhora) {
-		return sumaCaminoHastaAhora > longitudRedSubterraneo;
+	public void setRedSubterraneo(List<Arco<Integer>> redSubterraneo) {
+		this.redSubterraneo = redSubterraneo;
 	}
 
-	// Alcanzo una solucion cuando la cantidad de vertices delk grafo es igual a la
-	// cantidad de vertices visitados
-	boolean esSolucion(GrafoNoDirigido2<T> grafo, List<T> visitadas) {
-		return grafo.cantidadVertices() == visitadas.size();
+	public double getTiempoBacktracking() {
+		return tiempoBacktracking;
 	}
 
-	List<Arco<T>> obtenerPosiblesArcos(GrafoNoDirigido2<T> grafo, List<T> visitadas, ArrayList<Arco<T>> arcosUsados) {
+	public int getContadorCiclos() {
+		return this.contadorCiclos;
+	}
+	public List<Arco<Integer>> getSolucionParcial() {
+		return this.solucionParcial;
+	}
 
-		// todos los arcos del grafo
-		// que no esten usados previamente
-		// pero no obtengo cualquiera, solo puedo usar arcos que lleguen o terminen en
-		// mis vertices visitados
+	public List<Arco<Integer>> getArcos() {
+		return this.arcos;
+	}
 
-		ArrayList<Arco<T>> solucion = new ArrayList<>();
-		// Obtengo los arcos de vertices visitados
-		Iterator<Arco<T>> arcos = grafo.obtenerArcos(visitadas);
+	public void setArcos(List<Arco<Integer>> arcos) {
+		this.arcos = arcos;
+	}
 
-		while (arcos.hasNext()) {
-			Arco<T> arco = arcos.next();
-			if (!arcosUsados.contains(arco))
-				solucion.add(arco);
+	public int getSumaParcial() {
+		return this.sumaParcial;
+	}
+
+	public void sumarASumaParcial(Arco<Integer> arco) {
+		this.sumaParcial += arco.getEtiqueta();
+
+	}
+
+	public void RestarDeSumaParcial(Arco arco) {
+		this.sumaParcial -= arco.getEtiqueta();
+	}
+
+	public Integer getCostoMenor() {
+		return this.longitudSubterraneo;
+	}
+
+	public void inicializarArcos() {
+		Iterator<Arco<Integer>> itArcos = grafo.obtenerArcos();
+		while (itArcos.hasNext()) {
+			Arco<Integer> a = itArcos.next();
+			arcos.add(a);
 		}
-		return solucion;
 	}
 
-	// metodo void backtracking que agrega elementos a la redsubterraneo
-	public boolean backtracking(GrafoNoDirigido2<T> grafo, T estacionActual, int metrosDeRedActualEnConstruccion,
-			ArrayList<Arco<T>> solucionEnConstruccion, List<T> visitadas) {
-		
-		
-		System.out.println("Entro a Backtracking");
-		System.out.println("Red de subte en construccion: " + solucionEnConstruccion);
-		System.out.println("Longitud de la red de subte en construccion: " + metrosDeRedActualEnConstruccion);
-		System.out.println("Cantidad de iteraciones: " + contadorBacktracking);
+	public List<Arco<Integer>> back() {
+		Timer timerBacktracking = new Timer();
+		timerBacktracking.start();
+		back(arcos, solucionParcial, sumaParcial);
+		tiempoBacktracking = timerBacktracking.stop();
+		return redSubterraneo;
+	}
 
-		// if llegue a la solucion return true
-		if (esSolucion(grafo, visitadas)) {
-			// terminé
-			return true;
-		}
-
-		// else hago todo lo demás
-		else {
-
-			// traigo toda la lista de arcos adyacentes de la estación en la que estoy
-
-			Iterator<Arco<T>> iteradorArcos = obtenerPosiblesArcos(grafo, visitadas, solucionEnConstruccion).iterator();
-
-			while (iteradorArcos.hasNext()) {
-				contadorBacktracking++;
-				System.out.println("Entro al while");
-				System.out.println("Red de subte en construccion: " + solucionEnConstruccion);
-				System.out.println("Longitud de la red de subte en construccion: " + metrosDeRedActualEnConstruccion);
-				System.out.println("Cantidad de iteraciones: " + contadorBacktracking);
-				// elijo un arco siguiente
-				Arco<T> arcoSiguiente = iteradorArcos.next();
-				// si no tengo ese arco en la solucion me fijo si se puede agregar
-
-				if (!solucionEnConstruccion.contains(arcoSiguiente)
-						&& !visitadas.contains(arcoSiguiente.getVerticeDestino())) {
-
-					int longitudDelTunel = arcoSiguiente.getEtiqueta();
-					// si no lo podo lo agrego a la solucion potencial
-					if (!poda(metrosDeRedActualEnConstruccion + longitudDelTunel)) {
-						solucionEnConstruccion.add(arcoSiguiente);
-						// sumo ese arco a mi suma solucion parcial
-
-						metrosDeRedActualEnConstruccion += longitudDelTunel;
-						visitadas.add(arcoSiguiente.getVerticeDestino());
-						boolean result = backtracking(grafo, arcoSiguiente.getVerticeDestino(),
-								metrosDeRedActualEnConstruccion, solucionEnConstruccion, visitadas);
-
-						if (result) {
-							if (metrosDeRedActualEnConstruccion <= longitudRedSubterraneo) {
-								// actualizo la mejor solucion
-								longitudRedSubterraneo = metrosDeRedActualEnConstruccion;
-								redSubterraneo.clear();
-								redSubterraneo.addAll(solucionEnConstruccion);
-
-								System.out.println("Tengo un result=true");
-								System.out.println("Red de subte en construccion: " + solucionEnConstruccion);
-								System.out.println("Longitud de la red de subte en construccion: "
-										+ metrosDeRedActualEnConstruccion);
-								System.out.println("Cantidad de iteraciones: " + contadorBacktracking);
-							}
-						}
-						// Deshago la construcción de la solución
-						solucionEnConstruccion.remove(arcoSiguiente);
-						metrosDeRedActualEnConstruccion -= longitudDelTunel;
-						visitadas.remove(arcoSiguiente.getVerticeDestino());
-
-						System.out.println("Saco la última estacion y vuelvo en la recursión");
-						System.out.println("Red de subte en construccion: " + solucionEnConstruccion);
-						System.out.println(
-								"Longitud de la red de subte en construccion: " + metrosDeRedActualEnConstruccion);
-						System.out.println("Cantidad de iteraciones: " + contadorBacktracking);
+	private void back(List<Arco<Integer>> arcos, List<Arco<Integer>> solucionParcial, int sumaParciall) {
+		contadorCiclos++;
+		if (arcos.isEmpty() ) {
+			if (esConexo() && (!solucionParcial.isEmpty())) {
+					if (sumaParcial < longitudSubterraneo) {
+						longitudSubterraneo = sumaParcial;
+						redSubterraneo.clear();
+						redSubterraneo.addAll(solucionParcial);
+						System.out.println(" *****************************************************************************");
+						System.out.println(" ****************************** Tengo un resultado ***************************");
+						System.out.println("Red de subte en construccion: " + solucionParcial);
+						System.out.println("Longitud de la red de subte en construccion: " + sumaParcial);
+						System.out.println("Cantidad de iteraciones: " + contadorCiclos);
+						System.out.println(" *****************************************************************************");
+						System.out.println(" *****************************************************************************");
 					}
-				}
-			} /* cierro while */
-			return false;
+			}
+		} else {
+			
+			Arco<Integer> arco = arcos.get(0);  //Primer arco disponible
+			arcos.remove(0); 			//Quitarlo de la lista de arcos disponibles
+
+			//Primer llamado a backtracking
+			solucionParcial.add(arco); // Agrega el arco a la solucion parcial
+			sumarASumaParcial(arco); // Suma la etiqueta
+
+			//Condicón de poda
+			if (sumaParcial < longitudSubterraneo &&  solucionParcial.size() <= grafo.cantidadVertices())      {
+				back(arcos, solucionParcial, sumaParcial);
+			}
+			//Deshacemos la suma del arco y el agregado a la solución parcial
+			RestarDeSumaParcial(arco);
+			solucionParcial.remove(arco);
+			
+			//Segundo llamado a backtracking. No agrega arco a la solución parcial
+			if (sumaParcial < longitudSubterraneo &&  solucionParcial.size() <= grafo.cantidadVertices()) {
+				back(arcos, solucionParcial, sumaParcial);
+			}
+			
+			//Agregamos el arco a la lista 
+			arcos.add(0, arco);
 		}
+	}
+
+	public boolean esConexo() {
+		UnionFind componentes = new UnionFind(grafo.cantidadVertices());
+		for (Arco<Integer> a : solucionParcial) {
+			int u = a.getVerticeOrigen();
+			int v = a.getVerticeDestino();
+			if (!componentes.connected(u - 1, v - 1))
+				componentes.union(u - 1, v - 1);
+		}
+		return (componentes.getTotal()==1);
 	}
 
 }

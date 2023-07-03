@@ -7,9 +7,9 @@ import Parte1.Arco;
 import Parte1.ArcoNoDirigido;
 import Parte1.GrafoAbstracto;
 
-public class GrafoNoDirigido2<T> extends GrafoAbstracto<T> {
+public class GrafoNoDirigido<T> extends GrafoAbstracto<T> {
 
-	public GrafoNoDirigido2() {
+	public GrafoNoDirigido() {
 		super.compGrafo = new HashMap<T, ArrayList<Arco<T>>>();
 		super.cantArcos = 0;
 	}

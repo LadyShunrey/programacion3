@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-public class GrafoDirigido2<T> extends GrafoAbstracto<T> {
+public class GrafoDirigido<T> extends GrafoAbstracto<T> {
 
-	public GrafoDirigido2() {
+	public GrafoDirigido() {
 		super.compGrafo = new HashMap<T, ArrayList<Arco<T>>>();
 		super.cantArcos = 0;
 	}

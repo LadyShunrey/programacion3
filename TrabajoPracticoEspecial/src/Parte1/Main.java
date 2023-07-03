@@ -4,7 +4,7 @@ public class Main {
 	public static <T> void main(String[]args) {
 		
 		System.out.println("\n-------------GRAFO 1--------------\n");
-		GrafoDirigido2<Integer> grafo = new GrafoDirigido2<>();
+		GrafoDirigido<Integer> grafo = new GrafoDirigido<>();
 		
 		grafo.agregarVertice(1);
 		grafo.agregarVertice(2);
@@ -42,7 +42,7 @@ public class Main {
 		System.out.println("\n----------------------------------");
 		System.out.println("-------------GRAFO 2-------------- \n");
 		
-		GrafoDirigido2<Integer> grafo2 = new GrafoDirigido2<>();
+		GrafoDirigido<Integer> grafo2 = new GrafoDirigido<>();
 		
 		grafo2.agregarVertice(1);
 		grafo2.agregarVertice(2);
