@@ -1,10 +1,11 @@
 package Parte2;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class UnionFind {
 
-   /* private ArrayList<Integer> vertices;
+    private ArrayList<Integer> vertices;
     private int total;
 
     //Complejidad O(Log cantidadVertices)
@@ -36,7 +37,7 @@ public class UnionFind {
         return this.total;
     }
     
-    */
+    /*
 	
     private HashMap<Integer, Integer> parent;
     private int total;
@@ -79,5 +80,6 @@ public class UnionFind {
     public boolean connected(int x, int y) {
         return find(x) == find(y);
     }
+    */
 	
 }

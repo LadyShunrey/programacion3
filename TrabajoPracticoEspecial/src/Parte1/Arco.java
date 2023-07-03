@@ -26,8 +26,41 @@ public abstract class Arco<T> {
 
 	public abstract boolean equals(Arco<T> a);
 
-	public String toString() {
-		return "[ " + verticeOrigen + ", " + verticeDestino + " ]";
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((verticeDestino == null) ? 0 : verticeDestino.hashCode());
+		result = prime * result + ((verticeOrigen == null) ? 0 : verticeOrigen.hashCode());
+		return result;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Arco<T> other = (Arco<T>) obj;
+		if (verticeDestino == null) {
+			if (other.verticeDestino != null)
+				return false;
+		} else if (!verticeDestino.equals(other.verticeDestino))
+			return false;
+		if (verticeOrigen == null) {
+			if (other.verticeOrigen != null)
+				return false;
+		} else if (!verticeOrigen.equals(other.verticeOrigen))
+			return false;
+		return true;
+	}	
+
+	public String toString() {
+		return "[ " + verticeOrigen + ", " + verticeDestino + ": "+etiqueta+ "]";
+	}
+	
+	
 
 }
