@@ -1,4 +1,4 @@
-package EJ_02;
+package Redoing;
 
 public class EJ_02 {
 	//Comparar las complejidades entre una Lista y un Array para cada caso

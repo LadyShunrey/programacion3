@@ -1,6 +1,6 @@
-package EJ_03;
+package Redoing;
 
-import EJ_01.Nodo;
+import Redoing.Nodo;
 
 public class Pila<T> {
 	

@@ -1,8 +1,8 @@
-package EJ_06;
+package Redoing;
 
 import java.util.Iterator;
 
-import EJ_01.ListaVinculada;
+import Redoing.ListaVinculada;
 
 public class ListaCombinada<T> {
 	

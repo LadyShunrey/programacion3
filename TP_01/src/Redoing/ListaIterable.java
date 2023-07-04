@@ -1,8 +1,8 @@
-package EJ_05;
+package Redoing;
 
 import java.util.Iterator;
 
-import EJ_01.Nodo;
+import Redoing.Nodo;
 
 public class ListaIterable<T> implements Iterable<T>{
 	

@@ -1,4 +1,4 @@
-package EJ_01;
+package Redoing;
 
 public class Nodo<T> {
 	private T contenido;

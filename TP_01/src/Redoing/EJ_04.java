@@ -1,6 +1,6 @@
-package EJ_04;
+package Redoing;
 
-import EJ_01.Nodo;
+import Redoing.Nodo;
 
 public class EJ_04<T> {
 	
