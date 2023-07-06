@@ -94,6 +94,21 @@ public class ListaVinculada<T> /*implements Iterable<T>*/{
 	public void setPrimerNodo(Nodo<T> primerNodo){
 		this.primerNodo = primerNodo;
 	}
+	
+	//indexOf EJERCICIO 4
+	public int indexOf(T elemento){
+		int posicion = -1; //este podria llamarse noEncontro
+		int iterador = 0; //este podria ser posicion
+		Nodo<T> head = primerNodo;
+		while(posicion==-1 && head!=null){
+			if (head.getInfo()==elemento){
+				posicion=iterador; //esto podria ser return iterador(que se llamaria posicion)
+			}
+			head = head.getNext();
+			iterador++;
+		}
+		return posicion;
+	}
 /*
 	@Override
 	public Iterator<T> iterator() {
