@@ -1,5 +1,7 @@
 package EJ_01;
 
+import java.util.Iterator;
+
 //import java.util.Iterator;
 
 /*Hacer lo métodos:
@@ -10,7 +12,7 @@ package EJ_01;
  * - toString
  * - T get(index)
  * */
-public class ListaVinculada<T> /*implements Iterable<T>*/{
+public class ListaVinculada<T> implements Iterable<T>{
 	
 	private Nodo<T> primerNodo;
 	private int size;
@@ -109,12 +111,14 @@ public class ListaVinculada<T> /*implements Iterable<T>*/{
 		}
 		return posicion;
 	}
-/*
+
+	//EJERCICIO 5
+	
 	@Override
 	public Iterator<T> iterator() {
 		return new ListaVinculadaIterator();
-	}*/
-	/*
+	}
+
 	private class ListaVinculadaIterator implements Iterator<T>{
 		
 		private Nodo<T> head;
@@ -140,7 +144,7 @@ public class ListaVinculada<T> /*implements Iterable<T>*/{
 			}
 		}
 		
-	}*/
+	}
 }
 
 
