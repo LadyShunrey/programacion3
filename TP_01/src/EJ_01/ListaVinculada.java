@@ -86,6 +86,14 @@ public class ListaVinculada<T> /*implements Iterable<T>*/{
 		}
 		return elementoARetornar;
 	}
+	
+	public Nodo<T> getPrimerNodo(){
+		return primerNodo;
+	}
+	
+	public void setPrimerNodo(Nodo<T> primerNodo){
+		this.primerNodo = primerNodo;
+	}
 /*
 	@Override
 	public Iterator<T> iterator() {
