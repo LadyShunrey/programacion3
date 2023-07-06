@@ -15,7 +15,7 @@ import java.util.Iterator;
 public class ListaVinculada<T> implements Iterable<T>{
 	
 	private Nodo<T> primerNodo;
-	private int size;
+	protected int size;
 
 	public ListaVinculada(){
 		this.primerNodo = null;

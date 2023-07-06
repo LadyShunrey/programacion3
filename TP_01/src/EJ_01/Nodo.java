@@ -1,8 +1,8 @@
 package EJ_01;
 
 public class Nodo<T> {
-	private T info;
-	private Nodo<T> next;
+	protected T info;
+	protected Nodo<T> next;
 	
 	public Nodo(){
 		info = null;
