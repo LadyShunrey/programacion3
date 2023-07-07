@@ -6,7 +6,21 @@ public class Nodo {
 	private Nodo derecho;
 	
 	public Nodo(){
-		
+		this.valor = null;
+		this.izquierdo=null;
+		this.derecho=null;
+	}
+	
+	public Nodo(Integer valor){
+		this.valor = valor;
+		this.izquierdo=null;
+		this.derecho=null;
+	}
+	
+	public Nodo(Integer valor, Nodo izquierdo, Nodo derecho){
+		this.valor = valor;
+		this.izquierdo = izquierdo;
+		this.derecho = derecho;
 	}
 
 	public Integer getValor() {
@@ -33,5 +47,8 @@ public class Nodo {
 		this.derecho = derecho;
 	}
 	
-	
+	@Override
+	public String toString(){
+		return "[Nodo " + valor + "]";
+	}
 }

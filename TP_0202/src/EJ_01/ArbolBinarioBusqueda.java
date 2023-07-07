@@ -18,12 +18,27 @@ public class ArbolBinarioBusqueda {
 		this.raiz = null;
 	}
 	
+	public ArbolBinarioBusqueda(Nodo raiz){
+		this.raiz = raiz;
+	}
+	
 	public Integer getRoot(){
 		return raiz.getValor();
 	}
 	
-	public boolean hasElem(Integer numero){
-		return true;
+	public boolean hasElem(Integer valorBuscado, Nodo raiz){
+		if (raiz == null) {
+	        return false;
+	    }
+	    
+	    if (raiz.getValor()==valorBuscado) {
+	        return true;
+	    }
+	    
+	    boolean encontradoIzquierdo = hasElem(valorBuscado, raiz.getIzquierdo());
+	    boolean encontradoDerecho = hasElem(valorBuscado, raiz.getDerecho());
+	    
+	    return encontradoIzquierdo || encontradoDerecho;
 	}
 	
 	public boolean isEmpty(){
@@ -71,5 +86,21 @@ public class ArbolBinarioBusqueda {
 	public ArrayList<Nodo> getElemAtLevel(Integer numero){
 		ArrayList<Nodo> lista = new ArrayList<>();
 		return lista;
+	}
+	
+	@Override
+	public String toString(){
+		return toString(raiz);
+	}
+	
+	private String toString(Nodo head) {
+	    if (head == null) {
+	        return "";
+	    }
+	    
+	    String izquierdo = toString(head.getIzquierdo());
+	    String derecho = toString(head.getDerecho());
+	    
+	    return izquierdo + head.getValor() + " " + derecho;
 	}
 }
