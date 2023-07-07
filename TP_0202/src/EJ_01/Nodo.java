@@ -1,38 +1,37 @@
 package EJ_01;
 
 public class Nodo {
-	
-	private Integer clave;
+	private Integer valor;
 	private Nodo izquierdo;
 	private Nodo derecho;
 	
-	public Nodo(Integer num){
-		this.clave = num;
-		this.izquierdo = null;
-		this.derecho = null;
+	public Nodo(){
+		
 	}
-	
-	public Integer getClave(){
-		return clave;
+
+	public Integer getValor() {
+		return valor;
 	}
-	
-	public Nodo getNodoIzquierdo(){
+
+	public void setValor(Integer valor) {
+		this.valor = valor;
+	}
+
+	public Nodo getIzquierdo() {
 		return izquierdo;
 	}
-	
-	public Nodo getNodoDerecho(){
+
+	public void setIzquierdo(Nodo izquierdo) {
+		this.izquierdo = izquierdo;
+	}
+
+	public Nodo getDerecho() {
 		return derecho;
 	}
-	
-	public void setClave(Integer num){
-		this.clave = num;
+
+	public void setDerecho(Nodo derecho) {
+		this.derecho = derecho;
 	}
 	
-	public void setNodoIzquierdo(Integer num){
-		this.izquierdo = new Nodo(num);
-	}
 	
-	public void setNodoDerecho(Integer num){
-		this.derecho = new Nodo(num);
-	}
 }
