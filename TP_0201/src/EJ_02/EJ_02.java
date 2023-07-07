@@ -5,6 +5,23 @@ Implemente un algoritmo de ordenamiento quicksort para un arreglo de tamaño N.
 1. ¿Cuál es su complejidad en el peor caso?
 2. ¿Cuál es su complejidad promedio?*/
 
+/*
+ * 1)
+ * MergeSort: Tanto en el peor caso como en el mejor caso, MergeSort tiene una
+ * complejidad de O(n log n), donde "n" es el tamaño del arreglo.
+ * 
+ * QuickSort: En el peor caso, el tiempo de ejecución de QuickSort es O(n^2),
+ * donde "n" es el tamaño del arreglo. 
+ * 
+ * 2)
+ * MergeSort: La complejidad promedio de MergeSort sigue siendo O(n log n).
+ * 
+ * QuickSort: En promedio, QuickSort también tiene una complejidad de O(n log n).
+ * 
+ * QuickSort depende mucho de dónde ponemos el pivote
+ * 
+ * */
+
 public class EJ_02 {
 	private static int [] numbers;
 	private static int [] helper;
