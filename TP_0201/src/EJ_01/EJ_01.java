@@ -5,6 +5,10 @@ Implemente un algoritmo de ordenamiento por burbujeo en un arreglo.
 1. ¿Qué complejidad O tienen estos algoritmos?
 */
 
+/*
+ *La complejidad de ambos es de O(n^2) 
+ */
+
 public class EJ_01 {
 
 	public static void main(String[] args) {
@@ -64,9 +68,13 @@ public class EJ_01 {
 	}
 	
 	public static void ordenarPorBurbujeo(int[]arreglo){
-		for(int i=0; i<arreglo.length;i++){
-			for(int j=i+1;j<arreglo.length-i;j++){
-				
+		for(int i=0; i<arreglo.length-1;i++){
+			for(int j=0;j<arreglo.length-i-1;j++){
+				if(arreglo[j]>arreglo[j+1]){
+					int aux = arreglo[j+1];
+					arreglo[j+1] = arreglo[j];
+					arreglo[j] = aux;
+				}
 			}
 		}
 	}
