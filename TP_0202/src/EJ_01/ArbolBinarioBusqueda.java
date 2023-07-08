@@ -168,16 +168,29 @@ public class ArbolBinarioBusqueda {
 		}
 	}
 	
-	public void printPosOrder(){
-		
+	
+	public void printPreOrder(Nodo raiz){
+		if (raiz != null) {
+	        System.out.print(raiz.getValor() + " "); 
+	        printPreOrder(raiz.getIzquierdo()); 
+	        printPreOrder(raiz.getDerecho()); 
+	    }
 	}
 	
-	public void printPreOrder(){
-		
+	public void printInOrder(Nodo raiz){
+		if (raiz != null) { 
+	        printInOrder(raiz.getIzquierdo());
+	        System.out.print(raiz.getValor() + " ");
+	        printInOrder(raiz.getDerecho()); 
+	    }
 	}
 	
-	public void printInOrder(){
-		
+	public void printPosOrder(Nodo raiz){
+		if (raiz != null) { 
+	        printPosOrder(raiz.getIzquierdo());
+	        printPosOrder(raiz.getDerecho()); 
+	        System.out.print(raiz.getValor() + " ");
+	    }
 	}
 	
 	public ArrayList<Nodo> getLongestBranch(){
