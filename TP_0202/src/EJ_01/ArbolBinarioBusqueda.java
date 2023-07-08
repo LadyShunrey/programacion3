@@ -1,6 +1,7 @@
 package EJ_01;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /*Implemente la estructura de Árbol Binario para búsquedas.
 Métodos:
@@ -193,24 +194,82 @@ public class ArbolBinarioBusqueda {
 	    }
 	}
 	
-	public ArrayList<Nodo> getLongestBranch(){
-		ArrayList<Nodo> lista = new ArrayList<>();
-		return lista; 
-	}
+	public List<Integer> getLongestBranch() {
+        List<Integer> longestBranch = new ArrayList<>();
+        findLongestBranch(raiz, new ArrayList<>(), longestBranch);
+        return longestBranch;
+    }
 	
-	public ArrayList<Nodo> getFrontera(){
-		ArrayList<Nodo> lista = new ArrayList<>();
-		return lista;
-	}
+	private void findLongestBranch(Nodo nodo, List<Integer> currentBranch, List<Integer> longestBranch) {
+        if (nodo == null) {
+            if (currentBranch.size() > longestBranch.size()) {
+                longestBranch.clear();
+                longestBranch.addAll(currentBranch);
+            }
+            return;
+        }
+
+        currentBranch.add(nodo.getValor());
+
+        findLongestBranch(nodo.getIzquierdo(), currentBranch, longestBranch);
+        findLongestBranch(nodo.getDerecho(), currentBranch, longestBranch);
+
+        currentBranch.remove(currentBranch.size() - 1);
+    }
 	
-	public Integer getMaxElem(){
-		return 1;
-	}
+	public List<Integer> getFrontera() {
+        List<Integer> frontera = new ArrayList<>();
+        findFrontera(raiz, frontera);
+        return frontera;
+    }
+
+    private void findFrontera(Nodo nodo, List<Integer> frontera) {
+        if (nodo == null) {
+            return;
+        }
+
+        if (nodo.getIzquierdo() == null && nodo.getDerecho() == null) {
+            frontera.add(nodo.getValor());
+        }
+
+        findFrontera(nodo.getIzquierdo(), frontera);
+        findFrontera(nodo.getDerecho(), frontera);
+    }
 	
-	public ArrayList<Nodo> getElemAtLevel(Integer numero){
-		ArrayList<Nodo> lista = new ArrayList<>();
-		return lista;
-	}
+    public Integer getMaxElem() {
+        if (raiz == null) {
+            return null;
+        }
+
+        return findMaxElem(raiz);
+    }
+
+    private Integer findMaxElem(Nodo nodo) {
+        if (nodo.getDerecho() == null) {
+            return nodo.getValor();
+        }
+
+        return findMaxElem(nodo.getDerecho());
+    }
+	
+    public List<Integer> getElemAtLevel(int level) {
+        List<Integer> elements = new ArrayList<>();
+        findElemAtLevel(raiz, level, 1, elements);
+        return elements;
+    }
+
+    private void findElemAtLevel(Nodo nodo, int targetLevel, int currentLevel, List<Integer> elements) {
+        if (nodo == null) {
+            return;
+        }
+
+        if (currentLevel == targetLevel) {
+            elements.add(nodo.getValor());
+        }
+
+        findElemAtLevel(nodo.getIzquierdo(), targetLevel, currentLevel + 1, elements);
+        findElemAtLevel(nodo.getDerecho(), targetLevel, currentLevel + 1, elements);
+    }
 	
 	@Override
 	public String toString(){
