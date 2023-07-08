@@ -20,12 +20,23 @@ public class Main {
 		//Raiz
 		Nodo ocho = new Nodo(8, tres, diez);
 		
+		
 		//Árbol
 		ArbolBinarioBusqueda arbol = new ArbolBinarioBusqueda(ocho);
 		
 		System.out.println(arbol);
 		
-		System.out.println(arbol.hasElem(2, ocho));
+		System.out.println(arbol.hasElem(5, ocho));
+		
+		System.out.println(cuatro.getDerecho());
+		
+		arbol.insert(5, ocho);
+		
+		System.out.println(arbol.hasElem(5, ocho));
+		
+		System.out.println(cuatro.getDerecho());
+		
+		System.out.println(arbol.getHeight(ocho));
 		
 	}
 

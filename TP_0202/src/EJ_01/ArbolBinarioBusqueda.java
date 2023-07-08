@@ -42,19 +42,130 @@ public class ArbolBinarioBusqueda {
 	}
 	
 	public boolean isEmpty(){
-		return true;
+		return raiz!=null;
 	}
 	
-	public void insert(Integer numero){
+	public void insert(Integer nuevoValor, Nodo raiz){
+		if(!this.hasElem(nuevoValor, raiz)){
+			if(nuevoValor<raiz.getValor()){
+				if(raiz.getIzquierdo()==null){
+					Nodo nuevoNodo = new Nodo(nuevoValor);
+					raiz.setIzquierdo(nuevoNodo);
+				}
+				if(raiz.getIzquierdo()!=null){
+					insert(nuevoValor, raiz.getIzquierdo());
+				}
+			}
+			if(nuevoValor>raiz.getValor()){
+				if(raiz.getDerecho()==null){
+					Nodo nuevoNodo = new Nodo(nuevoValor);
+					raiz.setDerecho(nuevoNodo);
+				}
+				if(raiz.getDerecho()!=null){
+					insert(nuevoValor, raiz.getDerecho());
+				}
+			}
+		}
+	}
+	
+	public boolean delete(Integer valorABorrar, Nodo raiz, Nodo padre){
+		if(!this.hasElem(valorABorrar, raiz)){
+			return false;
+		}
+		if(raiz.getValor()==valorABorrar){
+			if(raiz.getDerecho()==null && raiz.getIzquierdo()==null){ //sin hijos
+				raiz.setValor(null);
+				return true;
+			}
+			if(raiz.getDerecho()==null && raiz.getIzquierdo()!=null){
+				//si padre hijo derecho == raiz
+				if(padre.getDerecho()==raiz){
+					//padre hijo derecho == raiz.unicoHijo
+					padre.setDerecho(raiz.getIzquierdo());
+				}
+				//si padre hijo izquierdo == raiz
+				if(padre.getIzquierdo()==raiz){
+					//padre hijo izquierdo == raiz.unicoHijo
+					padre.setIzquierdo(raiz.getIzquierdo());
+				}
+				raiz.setValor(null);
+				return true;
+			}
+			if(raiz.getDerecho()!=null && raiz.getIzquierdo()==null){
+				//si padre hijo derecho == raiz
+				if(padre.getDerecho()==raiz){
+					//padre hijo derecho == raiz.unicoHijo
+					padre.setDerecho(raiz.getDerecho());
+				}
+				//si padre hijo izquierdo == raiz
+				if(padre.getIzquierdo()==raiz){
+					//padre hijo izquierdo == raiz.unicoHijo
+					padre.setIzquierdo(raiz.getDerecho());
+				}
+				raiz.setValor(null);
+				return true;
+			}
+			if(raiz.getDerecho()!=null && raiz.getIzquierdo()!=null){
+				//NMDSI o NMISD
+				//encuentro el NMDSI
+				Nodo nmdsi = new Nodo();
+				nmdsi = raiz.getIzquierdo();
+				if(nmdsi.getDerecho()==null){
+					nmdsi = nmdsi.getDerecho();
+				}
+				else{
+					while(nmdsi.getDerecho()!=null){
+						nmdsi = nmdsi.getDerecho();	
+					}
+				}
+				
+				//padre apunta al NMISD
+				if(padre.getDerecho()==raiz){
+					padre.setDerecho(nmdsi);	
+				}
+				
+				if(padre.getIzquierdo()==raiz){
+					padre.setIzquierdo(nmdsi);	
+				}
+				
+				//reemplaza el numero a borrar con este
+				Nodo hijoIzquierdo = new Nodo();
+				Nodo hijoDerecho = new Nodo();
+				
+				hijoIzquierdo = raiz.getIzquierdo();
+				hijoDerecho = raiz.getDerecho();
+				
+				nmdsi.setDerecho(hijoDerecho);
+				nmdsi.setIzquierdo(hijoIzquierdo);
+				
+				raiz.setValor(null);
+				raiz.setDerecho(null);
+				raiz.setIzquierdo(null);
+				
+				return true;
+			}
+		}
+
+		boolean subarbolIzquierdo = delete(valorABorrar, raiz.getIzquierdo(), raiz);
+		boolean subarbolDerecho = delete(valorABorrar, raiz.getDerecho(), raiz);
 		
+		return subarbolIzquierdo || subarbolDerecho;
 	}
 	
-	public boolean delete(Integer numero){
-		return true;
-	}
-	
-	public Integer getHeight(){
-		return 1;
+	public Integer getHeight(Nodo raiz){
+		if (raiz == null) {
+	        return 0;
+	    }
+		else{
+			int alturaIzquierda = getHeight(raiz.getIzquierdo());
+	        int alturaDerecha = getHeight(raiz.getDerecho());
+	        
+	        if (alturaIzquierda > alturaDerecha) {
+	            return alturaIzquierda + 1;
+	        } else {
+	            return alturaDerecha + 1;
+	        }
+		}
 	}
 	
 	public void printPosOrder(){
@@ -101,6 +212,6 @@ public class ArbolBinarioBusqueda {
 	    String izquierdo = toString(head.getIzquierdo());
 	    String derecho = toString(head.getDerecho());
 	    
-	    return izquierdo + head.getValor() + " " + derecho;
+	    return izquierdo + head + " " + derecho;
 	}
 }
