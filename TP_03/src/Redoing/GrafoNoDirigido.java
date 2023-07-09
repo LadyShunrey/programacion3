@@ -1,4 +1,4 @@
-package EJ_01;
+package Redoing;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,4 +23,5 @@ public class GrafoNoDirigido {
         Map<String, Integer> arcosDestino = grafo.get(verticeDestino);
         arcosDestino.put(verticeOrigen, longitud);
 	}
+	
 }

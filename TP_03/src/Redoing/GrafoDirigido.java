@@ -1,12 +1,12 @@
-package EJ_01;
+package Redoing;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class GrafoNoDirigido {
+public class GrafoDirigido {
 	private Map<String, Map<String, Integer>> grafo;
 	
-	public GrafoNoDirigido() {
+	public GrafoDirigido() {
         this.grafo = new HashMap<>();
     }
 	
@@ -20,7 +20,5 @@ public class GrafoNoDirigido {
         
         Map<String, Integer> arcosOrigen = grafo.get(verticeOrigen);
         arcosOrigen.put(verticeDestino, longitud);
-        Map<String, Integer> arcosDestino = grafo.get(verticeDestino);
-        arcosDestino.put(verticeOrigen, longitud);
 	}
 }
