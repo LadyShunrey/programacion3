@@ -34,4 +34,15 @@ public abstract class Grafo implements GrafoMetodos{
 	    }
 	    return vertices.iterator();
 	}
+	public Iterator<String> obtenerVerticesAdyacentes(String verticeOrigen){
+		Map<String, Integer> arcosOrigen = grafo.get(verticeOrigen);
+	    ArrayList<String> verticesAdyacentes = new ArrayList<>();
+	    
+	    for (String verticeDestino : arcosOrigen.keySet()) {
+	        verticesAdyacentes.add(verticeDestino);
+	    }
+	    
+	    return verticesAdyacentes.iterator();
+	}
+	
 }

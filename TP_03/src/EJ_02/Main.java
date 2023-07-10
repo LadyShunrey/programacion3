@@ -37,6 +37,9 @@ public class Main {
 		grafoD.agregarVertice(d);
 		
 		//agregar arcos sino es un grafo todo desconexo
+		
+		ServicioDFS servicioDFS = new ServicioDFS(grafoND);
+		servicioDFS.dfs();
 	}
 
 }

@@ -11,5 +11,6 @@ public interface GrafoMetodos {
 	public void agregarArco(String verticeOrigen, String verticeDestino, int longitud);
 	
 	public Iterator<String> obtenerTodosLosVertices();
-
+ 
+	public Iterator<String> obtenerVerticesAdyacentes(String verticeOrigen);
 }
