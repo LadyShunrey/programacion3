@@ -67,6 +67,9 @@ public class ServicioDFS {
 				System.out.println("como el vertice adyacente " + verticeAdyacente + " está blanco lo vamos a visitar");
 				dfsVisit(verticeAdyacente);
 			}
+			else if(colores.get(verticeAdyacente).equals("AMARILLO")){
+				System.out.println("Hay un ciclo! Desde " + vertice + " hasta " + verticeAdyacente);
+			}
 		}
 		//negro
 		colores.put(vertice, "NEGRO");
