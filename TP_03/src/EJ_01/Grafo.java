@@ -17,8 +17,8 @@ public abstract class Grafo implements GrafoMetodos{
     }
 	
 	public void agregarArco(String verticeOrigen, String verticeDestino, int longitud) {
-		agregarVertice(verticeOrigen);
-        agregarVertice(verticeDestino);
+//		agregarVertice(verticeOrigen);
+//        agregarVertice(verticeDestino);
         
         Map<String, Integer> arcosOrigen = grafo.get(verticeOrigen);
         arcosOrigen.put(verticeDestino, longitud);

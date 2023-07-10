@@ -28,11 +28,6 @@ public class ServicioDFS {
 			colores.put(vertice, "BLANCO");
 			System.out.println("Pongo de color: "+ colores.get(vertice) +" el vértice: " + vertice);
 		}
-		//for each vertice u pertenece G->V{
-		//	u->color= BLANCO;
-		//	u.color
-		//}
-//		int tiempo = 0;
 		
 		for(String vertice: vertices){
 			System.out.println("el vertice " + vertice + " está de color " + colores.get(vertice));
@@ -42,23 +37,13 @@ public class ServicioDFS {
 			}
 		}
 		
-		//for each vertice u pertenece G->V{
-		// if(u->color == BLANCO)
-			//DFS_Visit(u)
-		//}
+		
 	}
-	//DFS_Visit(u){
 		
 	public void dfsVisit(String vertice){
-	//	u->color= AMARILLO;
 		colores.put(vertice, "AMARILLO");
 		System.out.println("pongo en color: "+colores.get(vertice)+" el vertice: " + vertice);
 		
-	//tiempo = tiempo+1;
-	//u->d = tiempo;
-	//for each v e u->Adj[]
-	//{
-
 		Iterator<String> iteradorAdyacentes = grafo.obtenerVerticesAdyacentes(vertice);
 		while(iteradorAdyacentes.hasNext()){
 			String verticeAdyacente = iteradorAdyacentes.next();
@@ -71,7 +56,7 @@ public class ServicioDFS {
 				System.out.println("Hay un ciclo! Desde " + vertice + " hasta " + verticeAdyacente);
 			}
 		}
-		//negro
+		
 		colores.put(vertice, "NEGRO");
 		System.out.println("El vertice " + vertice + " ahora está de color " + colores.get(vertice));
 	}

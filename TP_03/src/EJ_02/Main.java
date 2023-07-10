@@ -48,7 +48,7 @@ public class Main {
 		grafoD.agregarArco(c, b, 0);
 		grafoD.agregarArco(b, d, 0);
 		
-		ServicioDFS servicioDFS = new ServicioDFS(grafoD);
+		ServicioDFS servicioDFS = new ServicioDFS(grafoND);
 		servicioDFS.dfs();
 	}
 
