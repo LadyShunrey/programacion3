@@ -9,10 +9,10 @@ import EJ_01.*;
 
 public class ServicioDFS {
 	
-	private GrafoNoDirigido grafo;
+	private Grafo grafo;
 	private Map<String, String> colores;
 	
-	public ServicioDFS(GrafoNoDirigido grafo){
+	public ServicioDFS(Grafo grafo){
 		this.grafo = grafo;
 		colores = new HashMap<>();
 	}
@@ -32,10 +32,12 @@ public class ServicioDFS {
 		//	u->color= BLANCO;
 		//	u.color
 		//}
-		int tiempo = 0;
+//		int tiempo = 0;
 		
 		for(String vertice: vertices){
+			System.out.println("el vertice " + vertice + " está de color " + colores.get(vertice));
 			if(colores.get(vertice).equals("BLANCO")){
+				System.out.println("como el vertice " + vertice + " está blanco lo vamos a visitar");
 				dfsVisit(vertice);
 			}
 		}
@@ -60,10 +62,15 @@ public class ServicioDFS {
 		Iterator<String> iteradorAdyacentes = grafo.obtenerVerticesAdyacentes(vertice);
 		while(iteradorAdyacentes.hasNext()){
 			String verticeAdyacente = iteradorAdyacentes.next();
+			System.out.println("Un adyacente de " + vertice + " es " + verticeAdyacente + " y el color de este adyacente es: " + colores.get(verticeAdyacente));
 			if(colores.get(verticeAdyacente).equals("BLANCO")){
+				System.out.println("como el vertice adyacente " + verticeAdyacente + " está blanco lo vamos a visitar");
 				dfsVisit(verticeAdyacente);
 			}
 		}
+		//negro
+		colores.put(vertice, "NEGRO");
+		System.out.println("El vertice " + vertice + " ahora está de color " + colores.get(vertice));
 	}
 	
 }

@@ -22,7 +22,13 @@ public class Main {
 		grafoND.agregarVertice(b);
 		grafoND.agregarVertice(c);
 		grafoND.agregarVertice(d);
-		//agregar arcos sino es un grafo todo desconexo		
+		
+		//agregar arcos sino es un grafo todo desconexo	
+		grafoND.agregarArco(a, b, 0);
+		grafoND.agregarArco(a, c, 0);
+		grafoND.agregarArco(b, c, 0);
+		grafoND.agregarArco(b, d, 0);
+		
 		Iterator<String> iteradorVertices = grafoND.obtenerTodosLosVertices();
 		
 		while(iteradorVertices.hasNext()){
@@ -37,8 +43,12 @@ public class Main {
 		grafoD.agregarVertice(d);
 		
 		//agregar arcos sino es un grafo todo desconexo
+		grafoD.agregarArco(a, b, 0);
+		grafoD.agregarArco(a, c, 0);
+		grafoD.agregarArco(c, b, 0);
+		grafoD.agregarArco(b, d, 0);
 		
-		ServicioDFS servicioDFS = new ServicioDFS(grafoND);
+		ServicioDFS servicioDFS = new ServicioDFS(grafoD);
 		servicioDFS.dfs();
 	}
 
