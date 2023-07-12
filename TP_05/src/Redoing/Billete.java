@@ -1,4 +1,4 @@
-package EJ_01;
+package Redoing;
 
 public class Billete {
 	private int valorDelBillete;
