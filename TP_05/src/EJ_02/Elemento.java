@@ -25,5 +25,7 @@ public class Elemento {
 		this.valor = valor;
 	}
 	
-	
+	public String toString(){
+		return "[" + peso + ", " + valor + "]";
+	}
 }
